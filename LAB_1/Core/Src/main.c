@@ -91,12 +91,37 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    /* USER CODE END WHILE */
+  int count=0;
 
-    /* USER CODE BEGIN 3 */
-  }
+    while (1)
+    {
+        /* USER CODE END WHILE */
+        if (count==0 || count==1 || count==2 || count==3 || count ==4)
+        {
+            HAL_GPIO_WritePin(Led_Red_GPIO_Port, Led_Red_Pin, RESET);
+            HAL_GPIO_WritePin(Led_Yellow_GPIO_Port, Led_Yellow_Pin, SET);
+            HAL_GPIO_WritePin(Led_Green_GPIO_Port, Led_Green_Pin, SET);
+            count++;
+        }
+        if ( count==5 || count==6)
+                {
+                    HAL_GPIO_WritePin(Led_Red_GPIO_Port, Led_Red_Pin, SET);
+                    HAL_GPIO_WritePin(Led_Yellow_GPIO_Port, Led_Yellow_Pin, RESET);
+                    HAL_GPIO_WritePin(Led_Green_GPIO_Port, Led_Green_Pin, SET);
+                    count++;
+                }
+        if(count ==7 || count ==8 || count==9)
+        {
+        	HAL_GPIO_WritePin(Led_Red_GPIO_Port, Led_Red_Pin, SET);
+        	HAL_GPIO_WritePin(Led_Yellow_GPIO_Port, Led_Yellow_Pin, SET);
+            HAL_GPIO_WritePin(Led_Green_GPIO_Port, Led_Green_Pin, RESET);
+        	count++;
+        }
+        if(count==10)
+        {	count=0;}
+        HAL_Delay(1000);
+        /* USER CODE BEGIN 3 */
+    }
   /* USER CODE END 3 */
 }
 
@@ -148,10 +173,10 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, Led_red_Pin|Led_Yellow_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, Led_Red_Pin|Led_Yellow_Pin|Led_Green_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : Led_red_Pin Led_Yellow_Pin */
-  GPIO_InitStruct.Pin = Led_red_Pin|Led_Yellow_Pin;
+  /*Configure GPIO pins : Led_Red_Pin Led_Yellow_Pin Led_Green_Pin */
+  GPIO_InitStruct.Pin = Led_Red_Pin|Led_Yellow_Pin|Led_Green_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
