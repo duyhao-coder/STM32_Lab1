@@ -91,7 +91,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  void setNumberOnClock(int number)
+  void clearNumberOnClock(int number)
          {
 
        	  switch(number)
@@ -142,7 +142,7 @@ int main(void)
                 scanf("%d", &num);
 
                 if (num >= 0 && num <= 11) {
-                    setNumberOnClock(num);
+                	clearNumberOnClock(num);
                 }
                 HAL_Delay(1000);
             }
