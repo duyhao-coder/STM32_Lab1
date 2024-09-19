@@ -215,7 +215,7 @@ int main(void)
 	    setNumberOnClock(minutes / 5);
 	  counter_sec--;
 
-	  HAL_Delay(10);
+	  HAL_Delay(500);
 
   }
   /* USER CODE END 3 */
